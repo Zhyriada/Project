@@ -1,32 +1,8 @@
 <?php
 
-//подключаем класс Контрактор
-require __DIR__ . '/../Contractors/Models/Articles/Contractor.php';
-
-//автозагрузка новых классов, - оставляем???
-//spl_autoload_register(function (string $className) {
-//    require_once __DIR__ . '/../Contractors/' . str_replace
-//        ('\\', '/', $className) . '.php';
-//});
-
-$article = new \Contractors\Models\Articles\Contractor
-(
-    'CompanyName',
-    'CEO',
-    'Contact',
-    'Activity',
-    'Region'
-);
-var_dump($article);
-
-//контроллер
-require __DIR__ . '/../Contractors/Controllers/MainController.php';
-$controller = new \Contractors\Controllers\MainController();
-$controller->main();
-
-//роутер //выводит 2 моих таблички
 spl_autoload_register(function (string $className) {
-    require_once __DIR__ . '/../Contractors/' . str_replace('\\', '/', $className) . '.php';
+    require_once __DIR__ . '/../Contractors/' . str_replace('\\',
+            '/', $className) . '.php';
 });
 
 $route = $_GET['route'] ?? '';
@@ -53,4 +29,3 @@ $actionName = $controllerAndAction[1];
 
 $controller = new $controllerName();
 $controller->$actionName(...$matches);
-

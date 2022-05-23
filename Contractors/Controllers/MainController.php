@@ -8,18 +8,20 @@ use Contractors\View\View;
 
 class MainController
 {
-    public function main()
-    {
-        //$contractors = [
-        //    ['CompanyName' => ''],
-        //    ['CEO' => ''],
-        //    ['Contact' => ''],
-        //    ['Activity' => ''],
-        //    ['Region' => ''],
-        //];
+      private $view;
 
-        include __DIR__ . '/../../templates/main/main.php';
-        include __DIR__ . '/../../Contractors/Services/Db.php';
+      private $db;
+
+    public function __construct()
+    {
+        $this->view = new View(__DIR__ . '/../../../templates');
+        $this->db = new Db();
     }
 
+    public function main()
+    {
+        $articles = $this->db->query('SELECT * FROM `articles`;');
+        var_dump($articles);
+    }
 }
+

@@ -24,7 +24,7 @@ class Db
         $result = $sth->execute($params);
 
         if (false === $result) {
-            return null;
+            return "null"; //???
         }
 
         return $sth->fetchAll();
