@@ -21,7 +21,8 @@ class MainController
     public function main()
     {
         $articles = $this->db->query('SELECT * FROM `articles`;');
-        var_dump($articles);
+
+        echo $this->view->renderHtml('main.php', ['articles' => $articles]);
     }
 }
 
