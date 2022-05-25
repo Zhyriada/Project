@@ -19,6 +19,6 @@ class View
         $buffer = ob_get_contents();
         ob_end_clean();
 
-        echo $buffer;
+        return $buffer;
     }
 }
